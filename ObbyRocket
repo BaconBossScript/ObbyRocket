@@ -1,0 +1,142 @@
+if game.PlaceId == 14034480512 then
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "BaconBoss Hub | Obby But You're On A JetPack", HidePremium = false, SaveConfig = true, ConfigFolder = "Test"})
+
+_G.win = true
+_G.po = true
+_G.egg1 = true
+_G.egg2 = true
+_G.egg3 = true
+_G.egg4 = true
+_G.fuse = true
+
+function win()
+      while _G.win == true do
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(40500.2305, 9.40983582, -190.576706, -0.168875098, -1.58744946e-08, 0.985637486, -7.96647655e-08, 1, 2.45637888e-09, -0.985637486, -7.81057565e-08, -0.168875098)
+      wait(1)
+    end
+end
+
+function po()
+      while _G.po == true do
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(40600.8672, 9.40983582, -190.993164, 0.00327032874, -4.13827657e-08, -0.999994636, -3.06770573e-08, 1, -4.1483311e-08, 0.999994636, 3.08125578e-08, 0.00327032874)
+      wait(1)
+    end
+end
+
+function egg1()
+	 while _G.egg1 == true do
+		game:GetService("ReplicatedStorage").GameClient.Events.RemoteFunction.BuyEgg:InvokeServer("Common Egg","Buy1")
+	 wait(0.00000001)
+   end
+end
+
+function egg2()
+	 while _G.egg2 == true do
+	   game:GetService("ReplicatedStorage").GameClient.Events.RemoteFunction.BuyEgg:InvokeServer("Event Egg","Buy1")
+	 wait(0.00000001)
+    end
+end
+
+function egg3()
+	while _G.egg3 == true do
+	  game:GetService("ReplicatedStorage").GameClient.Events.RemoteFunction.BuyEgg:InvokeServer("Common Egg","Buy3")
+	wait(0.00000001)
+   end
+end
+
+function egg4()
+	while _G.egg4 == true do
+	  game:GetService("ReplicatedStorage").GameClient.Events.RemoteFunction.BuyEgg:InvokeServer("Event Egg","Buy3")
+	wait(0.00000001)
+   end
+end
+
+function fuse()
+	 while _G.fuse == true do
+		game:GetService("Players").LocalPlayer.Backpack.JetPack.Network.Jetpack:FireServer(true)
+		wait(0.00000001)
+   end
+end
+
+local MainTab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local eggTab = Window:MakeTab({
+	Name = "Egg",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+MainTab:AddToggle({
+	Name = "Auto Teleport To The End",
+	Default = false,
+	Callback = function(Value)
+		_G.win = Value
+        win()
+	end    
+})
+
+MainTab:AddLabel("Note: Wait Like 1 Minute To Restart")
+
+MainTab:AddToggle({
+	Name = "Auto Restart",
+	Default = false,
+	Callback = function(Value)
+		_G.po = Value
+        po()
+	end    
+})
+
+MainTab:AddLabel("Note: Must Stay In CheckPoint")
+
+MainTab:AddToggle({
+	Name = "Auto Farm Fuse",
+	Default = false,
+	Callback = function(Value)
+		_G.fuse = Value
+        fuse()
+	end    
+})
+
+eggTab:AddToggle({
+	Name = "Auto Hatch 1 Common Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.egg1 = Value
+        egg1()
+	end    
+})
+
+eggTab:AddToggle({
+	Name = "Auto Hatch 3 Common Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.egg3 = Value
+        egg3()
+	end    
+})
+
+eggTab:AddToggle({
+	Name = "Auto Hatch 1 Event Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.egg2 = Value
+        egg2()
+	end    
+})
+
+eggTab:AddToggle({
+	Name = "Auto Hatch 3 Event Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.egg4 = Value
+        egg4()
+	end    
+})
+
+end
